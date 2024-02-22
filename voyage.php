@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once './config/db.php';
 require_once './config/autoload.php';
 
@@ -133,6 +135,7 @@ $destinations = $destinationManager->getAllDestination();
 
 
 
+
 <section id="blur"></section>
 
 
@@ -141,14 +144,21 @@ $destinations = $destinationManager->getAllDestination();
   <div class="container" width="auto" height="100%">
   <h1 class="text-center text-white pt-0 title">Profitez de nos voyages du moment :</h1>
   <div class="d-flex justify-content-center align-items-center cards-list ">
-  <div class="card" width="auto" height="100vh">
-        <img src="./img/maroc.jpg" alt="Destination 1">
-        <div class="card-content d-flex   text-center flex-column">
-          <h3>Italie</h3>
-          <p>Rome</p>
-          <a href="#" class="btn">En savoir +</a>
+  <?php foreach ($destinations as $destination) { ?>
+    <div class="card" width="" height="">
+          <img src="./img/maroc.jpg" alt="Destination 1">
+          <div class="card-content d-flex text-center flex-column">
+            <h3><?php echo $destination->getLocation() ?></h3>
+            <p> <?php echo $destination->getPrice() ?> euros</p>
+
+
+
+            <a href="destination.php" class="btn">En savoir +</a>
+
+          </div>
         </div>
-      </div>
+       <?php } ?>    </div>
+     </div>
   
        
   </div>

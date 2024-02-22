@@ -9,11 +9,12 @@ if (
     isset($_POST['user_name']) && !empty($_POST['user_name']) &&
     isset($_POST['password']) && !empty($_POST['password'])
 ) {
- 
+ session_start();
+ $_SESSION['user_name'] = $_POST['user_name'];
 $userManager = new UserManager($db);
 $userManager->addUser($_POST['user_name'], $_POST['password']);
 
-header('Location: ../voyage.php');
+header('Location: ../index.php');
 exit;
 
 } else {

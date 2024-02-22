@@ -24,8 +24,8 @@ session_start();
 
       <div class="profile"> 
 
-        <h1 class="text-light mt-5"><a href="index.php">Comparator.</a></h1>
-        <div class="social-links mt-3 text-center">
+        <h1 class="text-light "><a href="index.php">Comparator.</a></h1>
+        <div class="social-links  text-center">
 
         </div>
       </div>
@@ -38,52 +38,22 @@ session_start();
           
         </div>
     </div>
-        <div class="d-flex justify-content-end align-items-end w-100 h-50 pe-4">
-        <a class="nav-link active text-white d-flex align-items-center pe-4" aria-current="page" href="#" id="openModalBtn">
-          <i class="fa-regular fa-user pe-2 pb-3"></i>
-          <p>Connexion</p>
-        </a>
-
-        <a class="nav-link active text-white d-flex align-items-center" aria-current="page" href="#" id="openModalBtn2">
-          
-          
-        </a>
-        </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon "></span>
-    </button>
-
-
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header ">
-        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Comparator Opérator</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-
-      </div>
-    </div>
-
-    </ul>
-    </nav>
-    </div>
-  </header>
-
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1 class="mb-5 h-100 w-100 ms-5 ps-5">Comparator Operator</h1>
-
-    </div>
-  </section><!-- End Hero -->
-
-
-
-
-<?php
+    <?php
 
   if (isset($_SESSION['user_name'])) {
     echo '<div style="color: white;">Bienvenue, ' . htmlspecialchars($_SESSION['user_name']) . '!!</div>';
-    echo '<form action="deconnexion.php" method="post"><input type="submit" value="Déconnexion"></form>';
+  
+  ?>
+    
+    <div class="d-flex justify-content-center" >
+    <form action="deconnexion.php" method="post">
+    <a class="nav-link active text-white d-flex align-items-center " aria-current="page" >
+      <i class="fa-solid fa-arrow-right-from-bracket  ">
+      <p class="d-flex">Log Out</p></i>
+      </form>
+      </a>
+
+  </div> <?php ;
 } else{
 
 ?>
@@ -121,7 +91,7 @@ session_start();
                 <span id="closeModalBtn2" class="close">&times;</span>
                 <p>Inscription :</p>
 
-                <form action="form.php" class="d-flex flex-column justify-content-center align-items-center">
+                <form action="/process/traitementform.php" class="d-flex flex-column justify-content-center align-items-center">
 
                   <label for="name" class="">Pseudo :</label>
                   <input type="text" id="name" name="user_name" class="pseudo " />
@@ -143,6 +113,50 @@ session_start();
 }
 
 ?>
+        <div class="d-flex justify-content-end align-items-end w-100 h-50 pe-4">
+        <a class="nav-link active text-white d-flex align-items-center pe-4" aria-current="page" href="#" id="openModalBtn">
+          <i class="fa-regular fa-user pe-2 pb-3"></i>
+          <p>Connexion</p>
+        </a>
+
+        <a class="nav-link active text-white d-flex align-items-center" aria-current="page" href="#" id="openModalBtn2">
+          
+          
+        </a>
+        </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon "></span>
+    </button>
+
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header ">
+        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Comparator Opérator </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+
+      </div>
+    </div>
+
+    </ul>
+    </nav>
+    </div>
+  </header>
+
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="hero-container" data-aos="fade-in">
+      <h1 class="mb-5 h-100 w-100 ms-5 ps-5">Comparator Operator</h1>
+
+    </div>
+  </section><!-- End Hero -->
+
+
+
+
+
+
+
 
   <script src="js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
