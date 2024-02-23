@@ -65,4 +65,14 @@ class DestinationManager
     }
     return $objectArray;
   }
+
+  public function createDestination(Destination $destination){ 
+    $q = $this->bdd->prepare("INSERT INTO destination (location, price, tour_operator_id) VALUES (:location, :price, :tour_operator_id)");
+    $q->execute([
+      'location' => $destination->getLocation(),
+      'price' => $destination->getPrice(),
+      'tour_operator_id' => $destination->getIdTourOperator()
+    ]);
+}
+
 }

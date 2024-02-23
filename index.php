@@ -33,34 +33,39 @@ session_start();
       <nav id="navbar" class="nav-menu navbar">
         <ul>
           <li><a href="index.php" class="nav-link scrollto active"><span>Home</span></a></li>
-          
-
+          <li><a href="voyage.php" class="nav-link scrollto active"><span>Voyages</span></a></li>
           
         </div>
     </div>
-    <?php
+    <?php if (isset($_SESSION['user_name']) && $_SESSION['user_name'] === "admin"  ) { ?>
 
-  if (isset($_SESSION['user_name'])) {
-    echo '<div style="color: white;">Bienvenue, ' . htmlspecialchars($_SESSION['user_name']) . '!!</div>';
-  
-  ?>
+    <a class="btn btn-primary" href="Admin.php" role="button">Panel Admin</a>
     
-    <div class="d-flex justify-content-center" >
-    <form action="deconnexion.php" method="post">
-    <a class="nav-link active text-white d-flex align-items-center " aria-current="page" >
-      <i class="fa-solid fa-arrow-right-from-bracket  ">
-      <p class="d-flex">Log Out</p></i>
-      </form>
-      </a>
+  <?php ?>
+    
+  <form action="deconnexion.php" method="post">
+    <a href="deconnexion.php" class="d-flex justify-content-center nav-link active text-white d-flex align-items-center" aria-current="page">
+     
+        <p class="d-flex">Log Out</p>
+      </i>
+    </a>
+  </form>
+    
 
-  </div> <?php ;
-} else{
+  </div></form>
+    
+  <?php 
+} else if  (isset($_SESSION['user_name'])) { 
 
-?>
-
-
-
-
+  echo '<div style="color: white;">Bienvenue, ' . htmlspecialchars($_SESSION['user_name']) . '!!</div>';
+ echo '<form action="deconnexion.php" method="post">
+  <a href="deconnexion.php" class="d-flex justify-content-center nav-link active text-white d-flex align-items-center" aria-current="page">
+   
+      <p class="d-flex">Log Out</p>
+    </i>
+  </a>
+</form>';
+} else { ?>
 
 
   <div id="myModal" class="modal">
@@ -108,14 +113,9 @@ session_start();
               </div>
             </div>
           </div>
-          <?php
-
-}
-
-?>
-        <div class="d-flex justify-content-end align-items-end w-100 h-50 pe-4">
+          <div class="d-flex justify-content-end align-items-end ">
         <a class="nav-link active text-white d-flex align-items-center pe-4" aria-current="page" href="#" id="openModalBtn">
-          <i class="fa-regular fa-user pe-2 pb-3"></i>
+         
           <p>Connexion</p>
         </a>
 
@@ -142,6 +142,12 @@ session_start();
     </ul>
     </nav>
     </div>
+          <?php
+
+}
+
+?>
+       
   </header>
 
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">

@@ -11,7 +11,7 @@
 
         $password = '';
 
-        $db = new PDO( $dsn, $user, $password);
+        $db = new PDO($dsn, $user, $password);
    }
    catch (Exception $message){
       

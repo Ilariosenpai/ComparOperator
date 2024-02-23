@@ -8,17 +8,20 @@ class Destination
     private $id;
     private $location;
     private $price;
-    private $id_tour_operator;
-    private $database;
+    private $tour_operator_id;
+
 
 
 
     public function __construct($data)
     {
-        $this->id = $data['id'];
+        if (isset($data['id'])) {
+            $this->id = $data['id'];
+        }
+       
         $this->location = $data['location'];
         $this->price = $data['price'];
-        $this->id_tour_operator = $data['tour_operator_id'];
+        $this->tour_operator_id = $data['tour_operator_id'];
     }
 
 
@@ -42,7 +45,7 @@ class Destination
 
     public function setIdTourOperator($id_tour_operator)
     {
-        $this->id_tour_operator = $id_tour_operator;
+        $this->tour_operator_id = $id_tour_operator;
     }
 
 
@@ -67,7 +70,7 @@ class Destination
 
     public function getIdTourOperator()
     {
-        return $this->id_tour_operator;
+        return $this->tour_operator_id;
     }
 
 

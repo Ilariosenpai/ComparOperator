@@ -28,15 +28,13 @@ $destinations = $destinationManager->getAllDestination();
 
 <body>
 
-  <header id="header">
+<header id="header">
     <div class="d-flex flex-column">
 
-      <div class="profile">
+      <div class="profile"> 
 
-        <h1 class="text-light mt-5"><a href="index.php">Comparator.</a></h1>
-
-
-        <div class="social-links mt-3 text-center">
+        <h1 class="text-light "><a href="index.php">Comparator.</a></h1>
+        <div class="social-links  text-center">
 
         </div>
       </div>
@@ -44,24 +42,96 @@ $destinations = $destinationManager->getAllDestination();
       <nav id="navbar" class="nav-menu navbar">
         <ul>
           <li><a href="index.php" class="nav-link scrollto active"><span>Home</span></a></li>
-          <li><a href="voyage.php" class="nav-link scrollto active"> <span>Voyage</span></a></li>
+          <li><a href="voyage.php" class="nav-link scrollto active"><span>Voyages</span></a></li>
+          
+
+          
+        </div>
+    </div>
+    <?php
+
+  if (isset($_SESSION['user_name'])) {
+    echo '<div style="color: white;">Bienvenue, ' . htmlspecialchars($_SESSION['user_name']) . '!!</div>';
+  
+  ?>
+    
+  <form action="deconnexion.php" method="post">
+    <a href="deconnexion.php" class="d-flex justify-content-center nav-link active text-white d-flex align-items-center" aria-current="page">
+      <i class="fa-solid fa-arrow-right-from-bracket">
+        <p class="d-flex">Log Out</p>
+      </i>
+    </a>
+  </form>
+    
+
+  </div></form>
+    
+  <?php ;
+} else{
+
+?>
 
 
+
+
+
+
+  <div id="myModal" class="modal">
+    <div class="modal-content" width="auto">
+      <span id="closeModalBtn" class="close">&times;</span>
+      <p class="d-flex justify-content-center">Connexion :</p>
+
+      <form action="process/traitementform.php" class="d-flex flex-column align-items-center" method="post">
+
+        <label for="name">Pseudo:</label>
+        <input type="text" id="name_connexion" name="user_name" class="pseudo" />
+        <br>
+
+        <label for="password" class="">Password :</label>
+        <input type="password" id="number_connexion" name="password" class="pseudo" />
+        <br>
+
+        <button type="submit" name="submit" class="w-100 text-align">Connexion</button>
+
+      </form>
+
     </div>
-    </div>
-    <div class="d-flex justify-content-end align-items-end w-100 h-50 pe-4">
-      <a class="nav-link active text-white d-flex align-items-center pe-4" aria-current="page" href="#" id="openModalBtn">
-        <i class="fa-regular fa-user pe-2 pb-3"></i>
-        <p>Connexion</p>
-     
-      
+  </div>
+
+
+  <div id="myModal2" class="modal">
+              <div class="modal-content bg-danger">
+                <span id="closeModalBtn2" class="close">&times;</span>
+                <p>Inscription :</p>
+
+                <form action="/process/traitementform.php" class="d-flex flex-column justify-content-center align-items-center">
+
+                  <label for="name" class="">Pseudo :</label>
+                  <input type="text" id="name" name="user_name" class="pseudo " />
+                  <br>
+
+                  <label for="password" class="">Password :</label>
+                  <input type="password" id="number" name="password" class="pseudo" />
+                  <br>
+
+
+                  <button type="inscription" name="inscription" class="w-100 ">Inscription</button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end align-items-end ">
+        <a class="nav-link active text-white d-flex align-items-center pe-4" aria-current="page" href="#" id="openModalBtn">
+         
+          <p>Connexion</p>
         </a>
 
-      <a class="nav-link active text-white d-flex align-items-center" aria-current="page" href="#" id="openModalBtn2">
-        <i class="fa-solid fa-user-plus pe-2 pb-3"></i>
-        <p class="">Inscription</p>
-      </a>
-    </div>
+        <a class="nav-link active text-white d-flex align-items-center" aria-current="page" href="#" id="openModalBtn2">
+          
+          
+        </a>
+        </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon "></span>
     </button>
@@ -69,7 +139,7 @@ $destinations = $destinationManager->getAllDestination();
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header ">
-        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Comparator Opérator</h5>
+        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Comparator Opérator </h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -80,6 +150,12 @@ $destinations = $destinationManager->getAllDestination();
     </ul>
     </nav>
     </div>
+          <?php
+
+}
+
+?>
+       
   </header>
 
 
@@ -139,37 +215,23 @@ $destinations = $destinationManager->getAllDestination();
 <section id="blur"></section>
 
 
-<section class="hero d-flex flex-column">
-  
-  <div class="container" width="auto" height="100%">
-  <h1 class="text-center text-white pt-0 title">Profitez de nos voyages du moment :</h1>
-  <div class="d-flex justify-content-center align-items-center cards-list ">
+<div class="d-flex justify-content-center align-items-center cards-list">
   <?php foreach ($destinations as $destination) { ?>
-    <div class="card" width="" height="">
+    <div class="card">
           <img src="./img/maroc.jpg" alt="Destination 1">
           <div class="card-content d-flex text-center flex-column">
+
             <h3><?php echo $destination->getLocation() ?></h3>
-            <p> <?php echo $destination->getPrice() ?> euros</p>
+            <p> <?php echo $destination->getPrice() . 'euros' ?> </p>
 
 
-
-            <a href="destination.php" class="btn">En savoir +</a>
-
+<form action="destination.php" method="post">
+            <input type="hidden" name="destination_name" value="<?php echo $destination->getLocation() ?>">
+            <button type="submit" class="btn">En savoir +</button>
+            </form>
           </div>
         </div>
-       <?php } ?>    </div>
-     </div>
-  
-       
-  </div>
-
-   </div>
-
-
-
-   
-    
-  </section>
+<?php } ?>
 
 
 
